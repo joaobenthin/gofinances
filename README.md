@@ -1,1 +1,1 @@
-<img source="assets/capa.png" />
+<img src="assets/capa.png" />
