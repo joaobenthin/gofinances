@@ -15,7 +15,7 @@ export function HighlightCard() {
     <Container>
       <Header>
         <Title>Entrada</Title>
-        <Icon name="" />
+        <Icon name="arrow-up-circle" />
       </Header>
 
       <Footer>
