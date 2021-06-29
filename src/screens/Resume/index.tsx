@@ -25,6 +25,8 @@ interface CategoryData {
   name: string;
   total: string;
   color: string;
+  percent: number;
+  percentFormatted: string;
 }
 
 export function Resume(): JSX.Element {
@@ -37,6 +39,12 @@ export function Resume(): JSX.Element {
 
     const expensives = responseFormatted
     .filter((expensive: TransactionData) => expensive.type === 'negative');
+
+    const expensivesTotal = expensives.reduce((accumulator: number, expensive: TransactionData) => {
+      return accumulator + Number(expensive.amount);
+    }, 0);
+
+    console.log(expensivesTotal);
 
     const totalByCategory: CategoryData[] = [];
 
@@ -55,14 +63,21 @@ export function Resume(): JSX.Element {
           currency: 'BRL'
         });
 
+        const percent = (categorySum / expensivesTotal * 100)
+        const percentFormatted = `${percent.toFixed(0)}%`;
+
         totalByCategory.push({
           key: category.key,
           name: category.name,
           color: category.color,
-          total
+          total,
+          percent,
+          percentFormatted
         });
       }
     });
+
+    console.log(totalByCategory);
 
     setTotalByCategories(totalByCategory);
   }
