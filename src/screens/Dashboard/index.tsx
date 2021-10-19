@@ -145,7 +145,7 @@ export function Dashboard() {
         <LoadContainer>
           <ActivityIndicator color={theme.colors.primary} size="large" />
         </LoadContainer>
-      ): (
+      ) : (
         <>
           <Header>
             <UserWrapper>
